@@ -1,18 +1,36 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Key stroke tracker</title>
+</head>
+<body>
+    
+</body>
+</html>
 
 <head>
     <script>
+        var track =[];
         document.onkeydown = function(event) {
-            var track =[];
+            
             var key_press = String.fromCharCode(event.keyCode);
             var key_code = event.keyCode;
             document.getElementById('kp').innerHTML = key_press;
             document.getElementById('kc').innerHTML = key_code;
+            document.getElementById('kl').innerHTML = track;
             var status = document.getElementById('status');
             status.innerHTML = "DOWN Event Fired For : " + key_press;
             track.push(key_press)
-            console.log(track)
+            
 
+     let sentence = track.reduce(function(total,elem){
+                return total + elem.track;
+            }, " " )
+            console.log(sentence)
+            
         }
         document.onkeyup = function(event) {
             var key_press = String.fromCharCode(event.keyCode);
@@ -29,5 +47,7 @@
     <span id="kp"></span>
     <br /> Key Code :
     <span id="kc"></span>
+    <br /> Key Log :
+    <span id="kl"></span>
     <p id="status">Keyboard Event Status</p>
 </body>
